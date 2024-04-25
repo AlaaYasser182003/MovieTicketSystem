@@ -1,0 +1,84 @@
+{% load static %}
+
+
+
+<html lang="en">
+<!-- <div style="display: flex;">
+    <div style="margin-right: 20px;">
+        <img src="{movie.poster}" alt="{movie.title} Poster" style="max-width: 200px; max-height: 300px;">
+    </div>  -->
+   
+    <!--{% load static %}   {% static 'home/movie_detail.css' %}   -->
+    
+    <header>
+        <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <link rel="stylesheet" href="{% static 'Cinema/details.css' %}">
+            <title>Movie Ticket Reservation</title>
+
+
+         <h1 id="title">Movie Ticket Reservation </h1>
+        <nav>
+            <ul>
+                <li><a href="{% url 'home' %}">Home</a></li>
+                <li><a href="{% url 'login' %}">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <main>
+       {% block body %}
+        <section id="selected-movie">
+            <div class="movie-detail">
+                <span class="poster">
+                    <img src="{{movie.movie_poster.url}}" alt="{{ movie.name }} Poster" class="movie-poster">
+                </span>
+                <span class="movie-info">
+                    <h2>Movie: {{ movie.name}}</h2>
+                    <span><h4>Cast: {{ movie.cast }}</h4></span>
+                    <span><h4>Genre: {{movie.genre}}</h4></span>
+                    <span><h4>language: {{ movie.language }}</h4></span>
+                    <span><h4> Country: {{ movie.country }}</h4></span>
+                    <span><h4>Duration: {{ movie.duration }}</h4></span>
+                    <span><h4>Release Date: {{ movie.releaseYear }}</h4></span>
+                    <span><h4>Description: {{ movie.description }}</h4></span>
+        
+
+           
+                 <div id="time">
+                    {% for show in movie_show %}
+                    <a href="{% url 'seat' movie.key show.shows %}">Day: {{ show.date}} Time: {{show.time}}  Price:{{show.price}}</a>
+                <br>
+                        {% endfor %}
+                    </div>  
+                     
+                    
+                  
+                </span>
+            </div>
+        </section>
+        {% endblock %}   
+    </main>
+
+    <footer>
+        <p>&copy; 2023 Movie Ticket Reservation</p>
+    </footer>
+
+
+<!--
+    
+   
+   
+    <div>
+        <h2>Movie Name :{{Movie.name}}</h2>
+        <p>Genre: {{Movie.genre}}</p>
+        <p>{{Movie.cast}}</p>
+        <p>Language: {movie.language}</p>
+        <p>Country: {movie.country}</p>
+        <p>Available experience: {movie.experience}</p>
+       <button onclick="playTrailer('${movie.trailer}')">Play Trailer</button> 
+    </div>
+</div>
+<p>{movie.description}</p>
+<h3>Showtimes</h3>
+-->

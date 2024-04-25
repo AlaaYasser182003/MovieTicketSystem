@@ -1,0 +1,47 @@
+
+{% load static %}
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'Cinema/seats.css' %}">
+    
+    
+    <title>Startup Cinema | Home</title>
+</head>
+    <header>
+        <h1>Movie Ticket Reservation</h1>
+        <nav>
+            <ul>
+                <li><a href="{% url 'home' %}">Home</a></li>
+               <li><a href="{% url 'details' movie.key %}">Back to movie selection</a></li>
+               
+            </ul>
+        </nav>
+    </header>
+    <style>
+        .hall_screen{
+            background-image: url("F:Ticketsystem/Ticketsystem/Cinema/static/Cinema/background.jpg");
+        }
+    </style>
+
+    <div class="hall__screen"></div>
+
+<div class="seats">
+
+      <div class="row" >
+      {% for seat in seats%}
+      
+      <!--<div class="space"></div> -->
+       <div class="seat" >
+        <a href="{% url 'payment' movie.key showtime.shows seat.seats %}"> {{seat.seatno}}</a>
+       <!-- <label for="seatA3"></label> -->
+      </div>
+      
+      {% endfor %}
+    </div>
+    
+
+</div>
+
+

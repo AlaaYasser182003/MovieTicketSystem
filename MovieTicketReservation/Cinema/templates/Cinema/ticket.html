@@ -1,0 +1,51 @@
+{% load static %}
+<!DOCTYPE html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'Cinema/ticket.css' %}">
+    <title>Startup Cinema | Home</title>
+</head>
+<body>
+    <header>
+        <h1>Movie Ticket Reservation</h1>
+        <nav>
+            <ul>
+               
+                <li><a href="{% url 'home' %}">Home</a></li>
+            </ul>
+        </nav>
+    </header>
+<div class="cardWrap">
+    <div class="card cardLeft">
+      <h1>Startup <span>Cinema</span></h1>
+      <div class="title">
+        <h2></h2>
+        <span>movie</span>
+        <h2>{{movie.name}} : {{movie.genre}}</h2>
+      </div>
+      
+      <div class="time">
+       
+        <span>time</span>
+        <h2>{{showtime.date}} : starts at  {{showtime.time}}</h2>
+      </div>
+      
+    </div>
+    <div class="card cardRight">
+      <div class="eye"></div>
+      <div class="barcode"></div>
+      <div class="number">
+        <h3>{{seatno.seatno}}</h3>
+        <span>seat</span>
+        <h3 id="seatno">{{useat.seatno}}</h3>
+      </div>
+     
+     
+    </div>
+  
+  </div>
+
+</body>
+

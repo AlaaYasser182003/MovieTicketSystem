@@ -1,0 +1,44 @@
+{% load static %}
+<!DOCTYPE html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'Cinema/home.css' %}">
+    <title>Box Office | Home</title>
+</head>
+<body>
+    <header>
+        <h1>Movie Ticket Reservation</h1>
+        <nav>
+            <ul>
+               
+                <li><a href="{% url 'login' %}">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+
+<main>
+    {% block content %}
+    <h2>Featured Movies</h2>
+    
+    {% for movie in movies %}
+    <section id="featured-movies">
+        <div class="movie">
+            <a href="{% url 'details' movie.key %}" data-movie-id="1">  
+               <img src="{{ movie.movie_poster.url }}" alt="Movie Poster">
+            </a>
+            <p> {{ movie.name }}</p>
+        </div>{% endfor %}
+       
+    </section>
+
+  
+    
+
+   {% endblock %}
+       
+    
+</main>
+
+</html>
